@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda de Manicure</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Fundo animado -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Tela de Login -->
+  <div class="login" id="loginSection">
+    <h2>Entrar</h2>
+    <input type="text" id="username" placeholder="Usuário" />
+    <input type="password" id="password" placeholder="Senha" />
+    <button onclick="login()">Entrar</button>
+  </div>
+
+  <!-- Tela da Agenda -->
+  <div class="schedule-container" id="scheduleSection" style="display: none">
+    <h1>Agenda</h1>
+    <p class="slogan">Realce sua beleza com pontualidade e cuidado.</p>
+
+    <!-- Formulário de agendamento -->
+    <div class="form-row">
+      <input type="date" id="dateInput" />
+      <input type="time" id="timeInput" />
+      <input type="text" id="clientName" placeholder="Nome do Cliente" />
+      <select id="serviceName">
+        <option value="">Selecione o serviço</option>
+        <option value="Manicure Tradicional - Mão e Pé|45">Manicure Tradicional - Mão e Pé - R$45</option>
+        <option value="Manicure Tradicional - Apenas mão|25">Manicure Tradicional - Apenas mão - R$25</option>
+        <option value="Pedicure|25">Pedicure - R$25</option>
+        <option value="Alongamento de Fibra|140">Alongamento de Fibra - R$140</option>
+        <option value="Alongamento de Gel|80">Alongamento de Gel - R$80</option>
+        <option value="Aplicação de postiça|40">Aplicação de postiça - R$40</option>
+        <option value="Aplicação de molde F1|130">Aplicação de molde F1 - R$130</option>
+        <option value="Aplicação de molde russo|130">Aplicação de molde russo - R$130</option>
+        <option value="Spar dos pés|50">Spar dos pés - R$50</option>
+        <option value="Manutenção de fibra|90">Manutenção de fibra - R$90</option>
+        <option value="Manutenção de banho em gel|70">Manutenção de banho em gel - R$70</option>
+        <option value="Manutenção de molde russo|80">Manutenção de molde russo - R$80</option>
+        <option value="Remoção do esmalte em gel|10">Remoção do esmalte em gel - R$10</option>
+        <option value="Remoção de fibra de vidro|50">Remoção de fibra de vidro - R$50</option>
+        <option value="Bride|0">Bride</option>
+        <option value="Curso|0">Curso</option>
+      </select>
+      <input type="number" id="servicePrice" placeholder="Valor do serviço (R$)" step="0.01"/>
+      <button onclick="addAppointment()"><i class="fa-solid fa-calendar-plus"></i> Adicionar</button>
+    </div>
+
+    <!-- Filtros e impressão -->
+    <div class="form-row">
+      <input type="date" id="filterDate" />
+      <button onclick="filterByDate()">Filtrar por Data</button>
+      <button onclick="renderAppointments()">Mostrar Todos</button>
+      <button onclick="printSchedule()">Imprimir Agenda</button>
+    </div>
+
+    <h2>Agendamentos</h2>
+    <div class="appointment-list" id="appointmentList"></div>
+
+    <h2>Lembretes de Manutenção</h2>
+    <div id="reminderPanel"></div>
+  </div>
+
+  <!-- Modal de Edição -->
+  <div id="editModal" class="modal" style="display:none">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3>Editar Agendamento</h3>
+      <div class="modal-form">
+        <input type="date" id="editDate"/>
+        <input type="time" id="editTime"/>
+        <input type="text" id="editClient" placeholder="Nome do Cliente"/>
+        <select id="editService">
+          <option value="">Selecione o serviço</option>
+          <option value="Manicure Tradicional - Mão e Pé|45">Manicure Tradicional - Mão e Pé - R$45</option>
+          <option value="Manicure Tradicional - Apenas mão|25">Manicure Tradicional - Apenas mão - R$25</option>
+          <option value="Pedicure|25">Pedicure - R$25</option>
+          <option value="Alongamento de Fibra|140">Alongamento de Fibra - R$140</option>
+          <option value="Alongamento de Gel|80">Alongamento de Gel - R$80</option>
+          <option value="Aplicação de postiça|40">Aplicação de postiça - R$40</option>
+          <option value="Aplicação de molde F1|130">Aplicação de molde F1 - R$130</option>
+          <option value="Aplicação de molde russo|130">Aplicação de molde russo - R$130</option>
+          <option value="Spar dos pés|50">Spar dos pés - R$50</option>
+          <option value="Manutenção de fibra|90">Manutenção de fibra - R$90</option>
+          <option value="Manutenção de banho em gel|70">Manutenção de banho em gel - R$70</option>
+          <option value="Manutenção de molde russo|80">Manutenção de molde russo - R$80</option>
+          <option value="Remoção do esmalte em gel|10">Remoção do esmalte em gel - R$10</option>
+          <option value="Remoção de fibra de vidro|50">Remoção de fibra de vidro - R$50</option>
+          <option value="Bride|0">Bride</option>
+          <option value="Curso|0">Curso</option>
+        </select>
+        <input type="number" id="editPrice" placeholder="Valor do serviço (R$)" step="0.01"/>
+      </div>
+      <div class="modal-buttons">
+        <button onclick="saveEdit()"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
+        <button onclick="closeModal()"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

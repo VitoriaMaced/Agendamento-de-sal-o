@@ -1,0 +1,433 @@
+/* Geral */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Fundo canvas */
+#particleCanvas {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+
+/* Login */
+.login {
+  max-width: 350px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #ffe6f0;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.login h2 {
+  text-align: center;
+  color: #ff66b2;
+  margin-bottom: 20px;
+}
+
+.login input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: 1px solid #ffb6c1;
+}
+
+.login button {
+  width: 100%;
+  padding: 10px;
+  border:none;
+  border-radius: 10px;
+  background:#ff66b2;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.login button:hover { background:#ff4d94; }
+
+/* Agenda */
+.schedule-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding:20px;
+  background: #ffe6f0;
+  border-radius: 15px;
+}
+
+.schedule-container h1 {
+  text-align:center;
+  color:#ff66b2;
+}
+
+.slogan {
+  text-align:center;
+  font-style: italic;
+  color:#ff66b2;
+}
+
+.form-row {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.form-row input, .form-row select, .form-row button {
+  flex:1;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ffb6c1;
+  font-size:14px;
+}
+
+.form-row button {
+  background:#ff66b2;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
+
+.form-row button:hover {
+  background:#ff4d94;
+}
+
+/* Lista de agendamentos */
+.appointment-item {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#ffd1dc;
+  padding:10px;
+  border-radius:10px;
+  margin-bottom:8px;
+  font-size:14px;
+}
+
+.appointment-item .buttons button {
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  color:#ff66b2;
+  margin-left:5px;
+}
+
+.appointment-item .buttons button:hover {
+  color:#ff3385;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(255,192,203,0.5);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+.modal-content {
+  background:#ffe6f0;
+  padding:20px;
+  border-radius:15px;
+  width:90%;
+  max-width:400px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-content h3 {
+  text-align:center;
+  color:#ff66b2;
+  margin-bottom:15px;
+}
+
+.modal-form input, .modal-form select {
+  width:100%;
+  padding:10px;
+  margin-bottom:10px;
+  border-radius:10px;
+  border:1px solid #ffb6c1;
+}
+
+.modal-buttons {
+  display:flex;
+  gap:10px;
+}
+
+.modal-buttons button {
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:#ff66b2;
+  color:white;
+  cursor:pointer;
+}
+
+.modal-buttons button:hover { background:#ff4d94; }
+/* BODY CENTRALIZA TODO O CONTEÚDO */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* centraliza horizontalmente */
+  align-items: center;     /* centraliza verticalmente */
+  background: #ffe6f0;     /* tom pastel rosa */
+  overflow: hidden;
+}
+
+/* FORMULÁRIO DE LOGIN */
+.login {
+  width: 350px;
+  padding: 20px;
+  background: #fff0f6;      /* tom delicado de rosa */
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TÍTULO */
+.login h2 {
+  color: #ff66b2;
+  margin-bottom: 20px;
+}
+
+/* CAMPOS DE INPUT */
+.login input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: 1px solid #ffb6c1;
+  font-size: 16px;
+}
+
+/* BOTÃO */
+.login button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #ff66b2;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.login button:hover {
+  background: #ff4d94;
+}
+/* MODAL DE EDIÇÃO CENTRALIZADO */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 230, 240, 0.7); /* fundo semi-transparente rosa pastel */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* garante que fique sobreposto a tudo */
+}
+
+/* CONTEÚDO DO MODAL */
+.modal-content {
+  background: #fff0f6; /* tom delicado de rosa */
+  border-radius: 15px;
+  padding: 20px;
+  width: 350px;
+  max-width: 90%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* FORMULÁRIO DENTRO DO MODAL */
+.modal-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-form input,
+.modal-form select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 10px;
+  border: 1px solid #ffb6c1;
+  font-size: 16px;
+}
+
+/* BOTÕES DO MODAL */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.modal-buttons button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #ff66b2;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.modal-buttons button:hover {
+  background: #ff4d94;
+}
+
+/* BOTÃO DE FECHAR */
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  color: #ff66b2;
+}
+/* Container de lembretes */
+#reminderPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* Cada lembrete */
+.maintenance-reminder {
+  background-color: #ffe4ec; /* rosa pastel */
+  border: 1px solid #ffc0cb;
+  border-radius: 10px;
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.maintenance-reminder:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Botão WhatsApp dentro do lembrete */
+.maintenance-reminder button {
+  background-color: #ffb6c1; /* rosa mais vivo */
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.maintenance-reminder button:hover {
+  background-color: #ff7f9b;
+}
+
+.maintenance-reminder i {
+  color: #fff;
+  font-size: 18px;
+}
+/* Container de agenda e lembretes sobreposto ao fundo */
+.schedule-container {
+  position: relative; /* para ficar sobre o canvas */
+  z-index: 10;        /* acima das partículas */
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff0f6; /* tom pastel delicado */
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Painel de lembretes */
+#reminderPanel {
+  position: relative; /* sobreposto ao container */
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+/* Cada lembrete */
+.maintenance-reminder {
+  background-color: #ffe4ec; /* rosa pastel */
+  border: 1px solid #ffc0cb;
+  border-radius: 12px;
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.maintenance-reminder:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.maintenance-reminder button {
+  background-color: #ffb6c1; /* rosa mais vivo */
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.maintenance-reminder button:hover {
+  background-color: #ff7f9b;
+}
+
+.maintenance-reminder i {
+  color: #fff;
+  font-size: 18px;
+}
+/* Geral */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto; /* Permite rolagem vertical */
+  height: auto;     /* Ajusta altura automaticamente ao conteúdo */
+}
+
+/* Remove overflow hidden que estava aqui antes */
+body {
+  display: block;   /* Remove flex que travava rolagem */
+  height: auto;
+  background: #ffe6f0;
+}
